@@ -60,17 +60,3 @@ def create_timestamp_file():
 # Call the function to create the timestamp file
 create_timestamp_file()
 
-def read_text_file(file_name):
-    try:
-        with open(file_name, 'r') as file:
-            file_content = file.read()
-            print("File content:")
-            print(file_content)
-    except FileNotFoundError:
-        print(f"Error: File '{file_name}' not found.")
-    except Exception as e:
-        print(f"Error: {e}")
-# Example usage:
-# Assuming you have a file named 'example.txt' with some content in the same directory as this script
-# Call the function with the file name
-read_text_file("example.txt")
