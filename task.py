@@ -36,7 +36,6 @@ ts = time.time()
 print(ts)
 #
 
-#task to create txt file
 file_path = r"C:\Users\ajayk\OneDrive\Desktop\python1\kumar\function.txt"
 
 with open(file_path, "a") as f:
