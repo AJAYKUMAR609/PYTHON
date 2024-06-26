@@ -83,7 +83,8 @@ driver.switch_to.window(driver.window_handles[-1])
 driver.close()
 driver.switch_to.window(driver.window_handles[1])
 driver.close()
-
+#
+f= open(r"C:\Users\ajayk\Downloads\fuction","x")
 
 
 
