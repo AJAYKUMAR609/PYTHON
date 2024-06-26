@@ -1,21 +1,54 @@
 
-#program to import time and create a text file
-import os
+# import module
+
 from datetime import datetime
 
+# get current date and time
 
-def create_timestamp_file():
-    # Get the current timestamp
-    current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+current_datetime = datetime.now().strftime("%Y-%m-%d %H-%M-%S")
 
-    # Create a text file with the current timestamp as its name
-    filename = f"{current_time}.txt"
+print("Current date & time : ", current_datetime)
 
-    # Write the current timestamp into the file
-    with open(filename, 'w') as file:
-        file.write(current_time)
+# convert datetime obj to string
 
-    print(f"File '{filename}' created with the content of the current timestamp.")
+str_current_datetime = str(current_datetime)
 
-# Call the function to create the timestamp file
-create_timestamp_file()
+# create a file object along with extension
+
+file_name = str_current_datetime + ".txt"
+
+file = open(file_name, 'w')
+
+print("File created : ", file.name)
+
+file.close()
+
+# using time module
+
+import time
+
+# ts stores the time in seconds
+
+ts = time.time()
+
+# print the current timestamp
+
+print(ts)
+#
+
+#f=open(r"C:\Users\ajayk\Downloads\fuction\ajay1.txt","x")
+
+### write the data into the txt fil
+file_path = r"C:\Users\ajayk\OneDrive\Desktop\python1\kumar\function.txt"
+
+with open(file_path, "a") as f:
+    f.write("this is the method is done by using function")
+
+#
+file_path = r"C:\Users\ajayk\OneDrive\Desktop\python1\kumar\function.txt"
+
+with open(file_path, "r") as f:
+    file_contents = f.read()
+    print(file_contents)
+
+
