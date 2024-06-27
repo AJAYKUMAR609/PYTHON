@@ -244,6 +244,50 @@ print(driver.current_url)
 driver.switch_to.window(driver.window_handles[-1])
 driver.close()
 
+#task -21
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+import os
+from selenium.webdriver.common.by import By
+# Set the path to your chromedriver executable
+chromedriver_path = r"C:\Users\ajay\OneDrive\Desktop\chromedriver.exe"
+os.environ["PATH"] += os.pathsep + os.path.dirname(chromedriver_path)
+
+# Create Chrome options
+chrome_options = Options()
+chrome_options.add_experimental_option("detach", True)
+
+# Initialize the WebDriver
+driver = webdriver.Chrome(options=chrome_options)
+
+# Open the Sauce Demo website
+driver.get("https://www.saucedemo.com/")
+
+# Enter login credentials
+driver.find_element_by_id("user-name").send_keys("standard_user")
+driver.find_element_by_id("password").send_keys("secret_sauce")
+driver.find_element_by_id("login-button").click()
+
+# Verify successful login (e.g., check URL or dashboard element)
+# You can customize this part based on the website's behavior
+
+# Print cookies before login
+print("Cookies before login:")
+for cookie in driver.get_cookies():
+    print(f"{cookie['name']}: {cookie['value']}")
+
+# Navigate to the dashboard or any other page
+# ...
+
+# Print cookies after login
+print("\nCookies after login:")
+for cookie in driver.get_cookies():
+    print(f"{cookie['name']}: {cookie['value']}")
+
+# Close the browser
+driver.quit()
+
+
 
 
 
