@@ -1,19 +1,36 @@
-#
-# test_imdb_search.py
 
+#task-26
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+import os
+import sys
+import time
 
+#
+sys.path.insert(0,os.path.abspath(os.path.join(os.path.dirname(__file__),'..')))
+from imdb import IMDbSearchPage
+
+#
 @pytest.fixture
-def driver():
-    # Set up Chrome WebDriver
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")  # Run headless for testing
-    driver = webdriver.Chrome(options=chrome_options)
-    yield driver
-    driver.quit()
+def browser():
+
+   chromedriver_path = r"C:\Users\ajay\OneDrive\Desktop\chromedriver.exe"
+   if not os.path.exists(chromedriver_path):
+        raise FileNotFoundError(f"chromedriver not found at path:{chromedriver_path}")
+
+   os.environ["PATH"] += os.pathsep + os.path.dirname(chromedriver_path)
+
+   # Create Chrome options
+   chrome_options = Options()
+   chrome_options.add_experimental_option("detach", True)
+
+   driver = webdriver.Chrome(options=chrome_options)
+   yield driver
+   time.sleep(5)
+   driver.quit()
 
 def test_imdb_search(driver):
     # Navigate to IMDb search page
@@ -28,7 +45,6 @@ def test_imdb_search(driver):
     # Click the search button
     search_page.click_search_button()
 
-    # Wait for search results (you can add explicit waits here)
 
     # Assert that the results page contains relevant information
     assert "kick" in driver.page_source
@@ -49,4 +65,5 @@ class IMDbSearchPage:
 
     def navigate_to_advanced_search(self):
         self.driver.find_element(*self.advanced_search_link).click()
+
 
