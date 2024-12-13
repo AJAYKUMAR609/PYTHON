@@ -36,9 +36,6 @@ ts = time.time()
 print(ts)
 #
 
-#f=open(r"C:\Users\ajayk\Downloads\fuction\ajay1.txt","x")
-
-### write the data into the txt fil
 file_path = r"C:\Users\ajayk\OneDrive\Desktop\python1\kumar\function.txt"
 
 with open(file_path, "a") as f:
